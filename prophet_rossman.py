@@ -2,10 +2,9 @@ from prophet import Prophet
 from predictor import Predictor
 
 REGRESSORS = [
-    'DayOfWeek', 'Open', 'SchoolHoliday', 'StateHoliday', 'Day',
-    'Month', 'Year', 'CompetitionDistance',
-    'CompetitionOpen', 'IsPromoMonth', 'day_sin', 'day_cos', 
-    'month_sin', 'month_cos'
+    'Promo', 'DayOfWeek', 'Open', 'SchoolHoliday', 'StateHoliday', 'Day', 
+    'Year', 'IsPromoMonth', 'DayOfWeek',
+    'Month'
 ]
 
 PROPHET_PARAMS = {

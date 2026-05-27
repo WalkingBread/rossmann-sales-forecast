@@ -1,5 +1,4 @@
 from statsmodels.tsa.statespace.sarimax import SARIMAX
-from statsmodels.tsa.stattools import adfuller
 from predictor import Predictor
 
 class SarimaxPredictor(Predictor):

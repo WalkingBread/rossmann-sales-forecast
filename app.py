@@ -107,7 +107,9 @@ with predict_tab:
             axes[1].legend(loc='best')
             st.pyplot(fig)
 
-            st.table(results[['Date', 'Predicted_Sales']])
+            results_display = results[['Date', 'Predicted_Sales']].reset_index(drop=True)
+            results_display['Date'] = results_display['Date'].dt.strftime('%d-%m-%Y')
+            st.table(results_display)
 
 with eval_tab:
     model_choice = st.radio("Choose Model", ["Prophet", "SARIMAX"], key=2)
@@ -149,8 +151,9 @@ with eval_tab:
             r2_score = r2(test_data['Sales'], test_data['Predicted_Sales'])
             st.metric(label="R2", value=f"{r2_score:.4f}")
 
-            comparison = test_data[['Date', 'Sales', 'Predicted_Sales']]
+            comparison = test_data[['Date', 'Sales', 'Predicted_Sales']].reset_index(drop=True)
             comparison['Difference'] = comparison['Sales'] - comparison['Predicted_Sales']
+            comparison['Date'] = comparison['Date'].dt.strftime('%d-%m-%Y')
 
             st.table(comparison.head(100))
 
